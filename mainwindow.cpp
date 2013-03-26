@@ -5,6 +5,9 @@
 #include <QLabel>
 #include <QElapsedTimer>
 #include <QInputDialog>
+#include <QFileDialog>
+#include <QtScript/QScriptEngine>
+#include <QtScript/QScriptValueIterator>
 
 #include "scenario.h"
 #include "scenariowidget.h"
@@ -62,10 +65,81 @@ void MainWindow::newScenario()
 
 void MainWindow::loadScenario()
 {
+    QString scenarioFile = QFileDialog::getOpenFileName(this, "Select a Scenario File",
+                                                        QString(), "Scenario JSON File (*.js)");
+    if (scenarioFile.isEmpty())
+        return;
+
     QElapsedTimer timer;
     timer.start();
-    QMessageBox::information(this, "Load Scenario - Not Implemented",
-                             "Sorry, the Load Scenario feature is not available yet.");
+
+    QFile f(scenarioFile);
+    if (!f.open(QFile::ReadOnly))
+        return;
+
+    QByteArray rawJson = f.readAll();
+    QScriptValue sc;
+    QScriptEngine engine;
+    sc = engine.evaluate(QString(rawJson));
+
+    // scenario name
+    QString name = sc.property("name").toString();
+    Scenario *s = new Scenario(name);
+
+    // floors
+    QScriptValue floors = sc.property("_floors");
+    QVariantMap floorMap = floors.toVariant().toMap();
+    foreach (QString floor, floorMap.keys()) {
+//        qDebug() << "Floor" << floor << "has value:";
+//        qDebug() << floorMap.value(floor);
+        Floor *f = new Floor(floor);
+        s->floors.append(f);
+    }
+
+    QScriptValue conversations = sc.property("_conversations");
+    QVariantMap conversationMap = conversations.toVariant().toMap();
+    foreach (QString conversation, conversationMap.keys()) {
+//        qDebug() << "Conversation" << conversation << "has value:";
+//        qDebug() << conversationMap.value(conversation);
+        Conversation *c = new Conversation(conversation);
+        s->conversations.append(c);
+    }
+
+    QScriptValue triggers = sc.property("_triggers");
+    QVariantMap triggerMap = triggers.toVariant().toMap();
+    foreach (QString trigger, triggerMap.keys()) {
+//        qDebug() << "Trigger" << trigger << "has value:";
+//        qDebug() << triggerMap.value(trigger);
+        Trigger *t = new Trigger(trigger);
+        s->triggers.append(t);
+    }
+
+    QScriptValue inactiveProps = sc.property("inactiveProps");
+    if (inactiveProps.isArray()) {
+        QStringList props;
+        qScriptValueToSequence(inactiveProps, props);
+//        qDebug() << "Inactive Props: " << props;
+        s->inactiveProps.append(props);
+    }
+
+    QScriptValue player = sc.property("_player");
+    s->playerX = player.property("x").toInteger();
+    s->playerY = player.property("y").toInteger();
+    s->playerZ = player.property("z").toInteger();
+    s->playerFacing = player.property("_facing").toString();
+
+    QScriptValue playerInventory = player.property("inventory");
+    if (playerInventory.isArray()) {
+        QStringList inv;
+        qScriptValueToSequence(playerInventory, inv);
+        s->playerInventory.append(inv);
+    }
+
+    ScenarioWidget *w = new ScenarioWidget(s);
+    int tabNum = tabWidget->addTab(w, name);
+    tabWidget->setCurrentIndex(tabNum);
+    ui->actionSave_Scenario->setEnabled(true);
+
     qint64 elapsed = timer.elapsed();
     ui->statusBar->showMessage("Completed command in " + QString::number(elapsed/1000.0) + " seconds", 3000);
 }
