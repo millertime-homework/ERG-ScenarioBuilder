@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>640</width>
-    <height>480</height>
+    <width>593</width>
+    <height>526</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -46,10 +46,51 @@
        <widget class="QListWidget" name="floors"/>
       </item>
       <item>
-       <widget class="QPushButton" name="addFloor">
-        <property name="text">
-         <string>Add Floor...</string>
+       <widget class="QFrame" name="frame_5">
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
         </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="margin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="addFloor">
+           <property name="text">
+            <string>Add...</string>
+           </property>
+           <property name="shortcut">
+            <string>Ctrl+Shift+F</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="editFloor">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Edit</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="removeFloor">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Remove</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </item>
      </layout>
@@ -87,10 +128,51 @@
        <widget class="QListWidget" name="conversations"/>
       </item>
       <item>
-       <widget class="QPushButton" name="addConversation">
-        <property name="text">
-         <string>Add Conversation...</string>
+       <widget class="QFrame" name="frame_6">
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
         </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="margin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="addConversation">
+           <property name="text">
+            <string>Add...</string>
+           </property>
+           <property name="shortcut">
+            <string>Ctrl+Shift+C</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="editConversation">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Edit</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="removeConversation">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Remove</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </item>
      </layout>
@@ -128,10 +210,51 @@
        <widget class="QListWidget" name="triggers"/>
       </item>
       <item>
-       <widget class="QPushButton" name="addTrigger">
-        <property name="text">
-         <string>Add Trigger...</string>
+       <widget class="QFrame" name="frame_7">
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
         </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_3">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="margin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="addTrigger">
+           <property name="text">
+            <string>Add...</string>
+           </property>
+           <property name="shortcut">
+            <string>Ctrl+Shift+T</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="editTrigger">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Edit</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="removeTrigger">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Remove</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </item>
      </layout>
@@ -169,10 +292,51 @@
        <widget class="QListWidget" name="inactiveProps"/>
       </item>
       <item>
-       <widget class="QPushButton" name="addInactiveProp">
-        <property name="text">
-         <string>Add Inactive Prop...</string>
+       <widget class="QFrame" name="frame_8">
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
         </property>
+        <property name="frameShadow">
+         <enum>QFrame::Raised</enum>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout_4">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="margin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QPushButton" name="addInactiveProp">
+           <property name="text">
+            <string>Add...</string>
+           </property>
+           <property name="shortcut">
+            <string>Ctrl+Shift+P</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="editInactiveProp">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Edit</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QPushButton" name="removeInactiveProp">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>Remove</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </widget>
       </item>
      </layout>
@@ -190,12 +354,18 @@
      <property name="text">
       <string>Player Properties...</string>
      </property>
+     <property name="shortcut">
+      <string>Ctrl+P</string>
+     </property>
     </widget>
    </item>
    <item row="3" column="1">
     <widget class="QPushButton" name="annotations">
      <property name="text">
       <string>Annotations...</string>
+     </property>
+     <property name="shortcut">
+      <string>Ctrl+A</string>
      </property>
     </widget>
    </item>
