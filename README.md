@@ -8,7 +8,7 @@ This is the scenario builder for the Emergency Response Game,
 Portland State University Capstone Senior Project - completed
 Winter 2013 by Team Banana for Clark College.
 
-**Recently Added*
+**Recently Added**
 
 * Initial version just created.
 
