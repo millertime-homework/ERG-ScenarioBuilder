@@ -53,11 +53,7 @@ void MainWindow::newScenario()
     if (name.isEmpty()) {
         return;
     }
-    Scenario *s = new Scenario();
-    s->name = name;
-    s->playerX = 0;
-    s->playerY = 0;
-    s->playerZ = 0;
+    Scenario *s = new Scenario(name);
     ScenarioWidget *w = new ScenarioWidget(s);
     int tabNum = tabWidget->addTab(w, name);
     tabWidget->setCurrentIndex(tabNum);

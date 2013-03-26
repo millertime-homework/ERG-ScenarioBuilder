@@ -15,6 +15,9 @@ public:
     ScenarioWidget(Scenario *s, QWidget *parent = 0);
 
 public slots:
+    void addFloor();
+    void addConversation();
+    void addTrigger();
     void addInactiveProp();
     void showPlayerDialog();
 

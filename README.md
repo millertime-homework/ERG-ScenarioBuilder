@@ -10,6 +10,10 @@ Winter 2013 by Team Banana for Clark College.
 
 **Recently Added**
 
+* Floors, Conversations, Triggers can be added when creating new scenario.
+
+**Previously Added**
+
 * Initial version just created.
 * New scenarios can be created.
 * Player dialog shows X, Y, Z, and facing start values as well as starting inventory items.
@@ -19,12 +23,10 @@ Winter 2013 by Team Banana for Clark College.
 
 **To do**
 
-* Items in Floors box need to open Floor Dialog, and so on.
-* Items in Conversations box need to open Conversation Dialog.
-* Items in Triggers box need to open Trigger Dialog.
-* Add buttons for Edit and Remove under Floors, Conversations, Triggers.
+* Add Edit buttons under Floors, Conversations, Triggers.
+* Add Remove buttons under Floors, Conversations, Triggers.
 * Open Scenario - Parsing JSON: http://qtwiki.remdex.info/Parsing_JSON_with_QT_using_standard_QT_library
-* Save Scenario to JSON
+* Save Scenario to JSON.
 
 **To do later**
 

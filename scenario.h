@@ -7,6 +7,7 @@ class QLabel;
 
 struct IntUndefInf
 {
+    IntUndefInf() : i(0), u(true), inf(false) {}
     int i;
     bool u;
     bool inf;
@@ -58,6 +59,7 @@ struct Room
 
 struct Floor
 {
+    Floor(const QString &n) : name(n), z(0) {}
     QString name;
     int z;
     QList<Room*> rooms;
@@ -88,6 +90,7 @@ struct ConversationOption
 
 struct Conversation
 {
+    Conversation(const QString &n) : name(n) {}
     QString name;
     QList<ConversationOption*> options;
 };
@@ -100,6 +103,7 @@ struct Event
 
 struct Trigger
 {
+    Trigger(const QString &n) : name(n), showCountdown(false), disabled(false) {}
     QString name;
     QList<Event*> events;
     IntUndefInf lives;
@@ -122,6 +126,7 @@ struct Annotation
 
 struct Scenario
 {
+    Scenario(const QString &n) : name(n), playerX(0), playerY(0), playerZ(0) {}
     QString name;
     QList<Floor*> floors;
     QList<Conversation*> conversations;
