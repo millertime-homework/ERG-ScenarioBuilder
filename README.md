@@ -11,6 +11,9 @@ Winter 2013 by Team Banana for Clark College.
 **Recently Added**
 
 * Floors, Conversations, Triggers can be added when creating new scenario.
+* Floors, Conversations, Triggers, Inactive Props can be removed. Have stubbed edit buttons too.
+* Shortcut keys for adding Floors (Ctrl+Shift+F), Conversations (Ctrl+Shift+C), Triggers (Ctrl+Shift+T),
+  and Inactive Props (Ctrl+Shift+P). Also for opening Player Properties (Ctrl+P) and Annotations (Ctrl+A).
 
 **Previously Added**
 
