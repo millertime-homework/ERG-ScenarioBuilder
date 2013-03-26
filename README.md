@@ -26,8 +26,6 @@ Winter 2013 by Team Banana for Clark College.
 
 **To do**
 
-* Add Edit buttons under Floors, Conversations, Triggers.
-* Add Remove buttons under Floors, Conversations, Triggers.
 * Open Scenario - Parsing JSON: http://qtwiki.remdex.info/Parsing_JSON_with_QT_using_standard_QT_library
 * Save Scenario to JSON.
 
