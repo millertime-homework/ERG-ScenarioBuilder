@@ -40,10 +40,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::aboutDialog()
 {
-    QMessageBox::information(this, "About...",
-                             "This is the scenario builder for the Emergency Response Game, "
-                             "Portland State University Capstone Senior Project - completed "
-                             "Winter 2013 by Team Banana for Clark College.");
+    QMessageBox::about(this, "About...",
+                       "This is the scenario builder for the Emergency Response Game, "
+                       "Portland State University Capstone Senior Project - completed "
+                       "Winter 2013 by Team Banana for Clark College.");
 }
 
 void MainWindow::newScenario()
