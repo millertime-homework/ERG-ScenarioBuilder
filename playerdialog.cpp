@@ -57,5 +57,6 @@ void PlayerDialog::addItem()
 {
     QString itemName = QInputDialog::getText(this, "New Item",
                                              "Enter item name");
-    ui->inventory->addItem(itemName);
+    if (!itemName.isEmpty())
+        ui->inventory->addItem(itemName);
 }

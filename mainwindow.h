@@ -19,6 +19,7 @@ private slots:
     void aboutDialog();
     void newScenario();
     void loadScenario();
+    void saveScenario();
 
 private:
     Ui::MainWindow *ui;

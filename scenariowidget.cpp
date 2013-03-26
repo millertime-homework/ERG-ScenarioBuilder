@@ -1,3 +1,5 @@
+#include <QInputDialog>
+
 #include "scenario.h"
 #include "playerdialog.h"
 #include "scenariowidget.h"
@@ -26,8 +28,18 @@ ScenarioWidget::ScenarioWidget(Scenario *s, QWidget *parent) :
         ui->inactiveProps->addItem(p);
     }
 
+    connect(ui->addInactiveProp, SIGNAL(clicked()),
+            this, SLOT(addInactiveProp()));
     connect(ui->player, SIGNAL(clicked()),
             this, SLOT(showPlayerDialog()));
+}
+
+void ScenarioWidget::addInactiveProp()
+{
+    QString propName = QInputDialog::getText(this, "Add an inactive prop",
+                                             "Please specify the name of the prop");
+    if (!propName.isEmpty())
+        ui->inactiveProps->addItem(propName);
 }
 
 void ScenarioWidget::showPlayerDialog()

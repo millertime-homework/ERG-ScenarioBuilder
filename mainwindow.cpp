@@ -1,8 +1,9 @@
+#include <QDebug>
 #include <QMessageBox>
 #include <QVBoxLayout>
 #include <QTabWidget>
 #include <QLabel>
-#include <QTime>
+#include <QElapsedTimer>
 #include <QInputDialog>
 
 #include "scenario.h"
@@ -28,6 +29,8 @@ MainWindow::MainWindow(QWidget *parent) :
             this, SLOT(newScenario()));
     connect(ui->actionLoad_Scenario, SIGNAL(triggered()),
             this, SLOT(loadScenario()));
+    connect(ui->actionSave_Scenario, SIGNAL(triggered()),
+            this, SLOT(saveScenario()));
 }
 
 MainWindow::~MainWindow()
@@ -47,6 +50,9 @@ void MainWindow::newScenario()
 {
     QString name = QInputDialog::getText(this, "New Scenario",
                                          "Enter a name for the scenario");
+    if (name.isEmpty()) {
+        return;
+    }
     Scenario *s = new Scenario();
     s->name = name;
     s->playerX = 0;
@@ -55,14 +61,25 @@ void MainWindow::newScenario()
     ScenarioWidget *w = new ScenarioWidget(s);
     int tabNum = tabWidget->addTab(w, name);
     tabWidget->setCurrentIndex(tabNum);
+    ui->actionSave_Scenario->setEnabled(true);
 }
 
 void MainWindow::loadScenario()
 {
-    QTime start = QTime::currentTime();
-    QLabel *tabOneWidget = new QLabel("Scenario!");
-    int tabNum = tabWidget->addTab(tabOneWidget, "Scenario");
-    tabWidget->setCurrentIndex(tabNum);
-    double elapsed = QTime::currentTime().msec() - start.msec();
-    ui->statusBar->showMessage("Scenario loaded in " + QString::number(elapsed/1000) + " seconds", 3000);
+    QElapsedTimer timer;
+    timer.start();
+    QMessageBox::information(this, "Load Scenario - Not Implemented",
+                             "Sorry, the Load Scenario feature is not available yet.");
+    qint64 elapsed = timer.elapsed();
+    ui->statusBar->showMessage("Completed command in " + QString::number(elapsed/1000.0) + " seconds", 3000);
+}
+
+void MainWindow::saveScenario()
+{
+    QElapsedTimer timer;
+    timer.start();
+    QMessageBox::information(this, "Save Scenario - Not Implemented",
+                             "Sorry, the Save Scenario feature is not available yet.");
+    qint64 elapsed = timer.elapsed();
+    ui->statusBar->showMessage("Completed command in " + QString::number(elapsed/1000.0) + " seconds", 3000);
 }
