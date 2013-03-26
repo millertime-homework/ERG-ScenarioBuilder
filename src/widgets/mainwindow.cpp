@@ -9,7 +9,7 @@
 #include <QtScript/QScriptEngine>
 #include <QtScript/QScriptValueIterator>
 
-#include "scenario.h"
+#include "src/scenario.h"
 #include "scenariowidget.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"

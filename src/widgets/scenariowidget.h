@@ -3,7 +3,7 @@
 
 #include <QWidget>
 
-#include "scenario.h"
+#include "../scenario.h"
 
 namespace Ui {
 class ScenarioWidget;

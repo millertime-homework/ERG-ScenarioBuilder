@@ -12,13 +12,16 @@ TEMPLATE = app
 SOURCES += src/main.cpp                \
     src/widgets/mainwindow.cpp         \
     src/widgets/scenariowidget.cpp     \
-    src/widgets/playerdialog.cpp
+    src/widgets/playerdialog.cpp \
+    src/widgets/floordialog.cpp
 
 HEADERS  += src/widgets/mainwindow.h   \
     src/scenario.h                     \
     src/widgets/scenariowidget.h       \
-    src/widgets/playerdialog.h
+    src/widgets/playerdialog.h \
+    src/widgets/floordialog.h
 
 FORMS    += src/widgets/mainwindow.ui  \
     src/widgets/scenariowidget.ui      \
-    src/widgets/playerdialog.ui
+    src/widgets/playerdialog.ui \
+    src/widgets/floordialog.ui

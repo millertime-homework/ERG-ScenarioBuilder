@@ -11,6 +11,7 @@ Winter 2013 by Team Banana for Clark College.
 **Recently Added**
 
 * Partially loads scenario from JSON file.
+* Partially displays Floor Widget for editing details for a Floor.
 
 **Previously Added**
 

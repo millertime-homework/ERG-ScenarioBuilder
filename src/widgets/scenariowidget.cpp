@@ -2,6 +2,7 @@
 #include <QMessageBox>
 
 #include "playerdialog.h"
+#include "floordialog.h"
 #include "scenariowidget.h"
 #include "ui_scenariowidget.h"
 
@@ -163,8 +164,15 @@ void ScenarioWidget::floorSelectionChanged()
 
 void ScenarioWidget::editFloor()
 {
-    QMessageBox::information(this, "Edit Floor - Not Implemented",
-                             "Sorry, the Edit Floor feature is not available yet.");
+    QList<QListWidgetItem*> selectedItems = ui->floors->selectedItems();
+    if (!selectedItems.isEmpty()) {
+        QString floorName = selectedItems.at(0)->text();
+        Floor *f = getFloor(floorName);
+        FloorDialog fd(floorName, f->z);
+        if (fd.exec()) {
+
+        }
+    }
 }
 
 void ScenarioWidget::removeFloor()
