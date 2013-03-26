@@ -1,2 +1,6 @@
 moc_*
 ui_*
+ERG-ScenarioBuilder.app*
+ERG-ScenarioBuilder.pro.*
+Makefile
+*.o

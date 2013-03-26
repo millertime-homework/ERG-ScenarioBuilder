@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ScenarioWidget</class>
+ <widget class="QWidget" name="ScenarioWidget">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>640</width>
+    <height>480</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
+    <widget class="QLabel" name="label">
+     <property name="styleSheet">
+      <string notr="true">QLabel { color: white; background-color: black; font-weight: bold; }</string>
+     </property>
+     <property name="text">
+      <string>Floors</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="0">
+    <widget class="QLabel" name="label_3">
+     <property name="styleSheet">
+      <string notr="true">QLabel { color: white; background-color: black; font-weight: bold; }</string>
+     </property>
+     <property name="text">
+      <string>Triggers</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="1">
+    <widget class="QLabel" name="label_2">
+     <property name="styleSheet">
+      <string notr="true">QLabel { color: white; background-color: black; font-weight: bold; }</string>
+     </property>
+     <property name="text">
+      <string>Conversations</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="3" column="1">
+    <widget class="QLabel" name="label_4">
+     <property name="styleSheet">
+      <string notr="true">QLabel { color: white; background-color: black; font-weight: bold; }</string>
+     </property>
+     <property name="text">
+      <string>Inactive Props</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0">
+    <widget class="QListWidget" name="floors"/>
+   </item>
+   <item row="1" column="1">
+    <widget class="QListWidget" name="conversations"/>
+   </item>
+   <item row="4" column="0">
+    <widget class="QListWidget" name="triggers"/>
+   </item>
+   <item row="4" column="1">
+    <widget class="QListWidget" name="inactiveProps"/>
+   </item>
+   <item row="2" column="0">
+    <widget class="QPushButton" name="addFloor">
+     <property name="text">
+      <string>Add Floor...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="1">
+    <widget class="QPushButton" name="addConversation">
+     <property name="text">
+      <string>Add Conversation...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="0">
+    <widget class="QPushButton" name="addTrigger">
+     <property name="text">
+      <string>Add Trigger...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="5" column="1">
+    <widget class="QPushButton" name="addInactiveProp">
+     <property name="text">
+      <string>Add Inactive Prop...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="0">
+    <widget class="QPushButton" name="player">
+     <property name="text">
+      <string>Player Properties...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="7" column="1">
+    <widget class="QPushButton" name="annotations">
+     <property name="text">
+      <string>Annotations...</string>
+     </property>
+    </widget>
+   </item>
+   <item row="6" column="0" colspan="2">
+    <widget class="Line" name="line">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
