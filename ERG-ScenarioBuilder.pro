@@ -9,17 +9,16 @@ QT       += core gui script
 TARGET = ERG-ScenarioBuilder
 TEMPLATE = app
 
+SOURCES += src/main.cpp                \
+    src/widgets/mainwindow.cpp         \
+    src/widgets/scenariowidget.cpp     \
+    src/widgets/playerdialog.cpp
 
-SOURCES += src/main.cpp        \
-    src/mainwindow.cpp         \
-    src/scenariowidget.cpp     \
-    src/playerdialog.cpp
+HEADERS  += src/widgets/mainwindow.h   \
+    src/scenario.h                     \
+    src/widgets/scenariowidget.h       \
+    src/widgets/playerdialog.h
 
-HEADERS  += src/mainwindow.h   \
-    src/scenario.h             \
-    src/scenariowidget.h       \
-    src/playerdialog.h
-
-FORMS    += src/mainwindow.ui  \
-    src/scenariowidget.ui      \
-    src/playerdialog.ui
+FORMS    += src/widgets/mainwindow.ui  \
+    src/widgets/scenariowidget.ui      \
+    src/widgets/playerdialog.ui
