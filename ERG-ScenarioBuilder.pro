@@ -10,16 +10,16 @@ TARGET = ERG-ScenarioBuilder
 TEMPLATE = app
 
 
-SOURCES += main.cpp\
-        mainwindow.cpp \
-    scenariowidget.cpp \
-    playerdialog.cpp
+SOURCES += src/main.cpp        \
+    src/mainwindow.cpp         \
+    src/scenariowidget.cpp     \
+    src/playerdialog.cpp
 
-HEADERS  += mainwindow.h \
-    scenario.h \
-    scenariowidget.h \
-    playerdialog.h
+HEADERS  += src/mainwindow.h   \
+    src/scenario.h             \
+    src/scenariowidget.h       \
+    src/playerdialog.h
 
-FORMS    += mainwindow.ui \
-    scenariowidget.ui \
-    playerdialog.ui
+FORMS    += src/mainwindow.ui  \
+    src/scenariowidget.ui      \
+    src/playerdialog.ui
