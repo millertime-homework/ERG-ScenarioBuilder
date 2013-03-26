@@ -10,10 +10,7 @@ Winter 2013 by Team Banana for Clark College.
 
 **Recently Added**
 
-* Floors, Conversations, Triggers can be added when creating new scenario.
-* Floors, Conversations, Triggers, Inactive Props can be removed. Have stubbed edit buttons too.
-* Shortcut keys for adding Floors (Ctrl+Shift+F), Conversations (Ctrl+Shift+C), Triggers (Ctrl+Shift+T),
-  and Inactive Props (Ctrl+Shift+P). Also for opening Player Properties (Ctrl+P) and Annotations (Ctrl+A).
+* Partially loads scenario from JSON file.
 
 **Previously Added**
 
@@ -22,11 +19,16 @@ Winter 2013 by Team Banana for Clark College.
 * Player dialog shows X, Y, Z, and facing start values as well as starting inventory items.
 * Editing player dialog values persists (the scenario objects are updated).
 * Inactive Props can be added (when creating new scenario).
+* Floors, Conversations, Triggers can be added when creating new scenario.
+* Floors, Conversations, Triggers, Inactive Props can be removed. Have stubbed edit buttons too.
+* Shortcut keys for adding Floors (Ctrl+Shift+F), Conversations (Ctrl+Shift+C), Triggers (Ctrl+Shift+T),
+  and Inactive Props (Ctrl+Shift+P). Also for opening Player Properties (Ctrl+P) and Annotations (Ctrl+A).
 * Inactive features of application are now indicative of this nature via warning messages (and timers work).
 
 **To do**
 
 * Open Scenario - Parsing JSON: http://qtwiki.remdex.info/Parsing_JSON_with_QT_using_standard_QT_library
+  (In Progress)
 * Save Scenario to JSON.
 
 **To do later**
