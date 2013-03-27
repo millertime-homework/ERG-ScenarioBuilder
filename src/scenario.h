@@ -36,7 +36,7 @@ struct Destination
     QString f;
 };
 
-struct Wall
+struct WallThumbnail
 {
     QString identifier;
     QString name;
@@ -54,7 +54,7 @@ struct Room
     int y;
     QString annotation;
     QStringList triggers;
-    QList<Wall*> walls;
+    QList<WallThumbnail*> walls;
 };
 
 struct Floor

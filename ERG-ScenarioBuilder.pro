@@ -13,15 +13,20 @@ SOURCES += src/main.cpp                \
     src/widgets/mainwindow.cpp         \
     src/widgets/scenariowidget.cpp     \
     src/widgets/playerdialog.cpp \
-    src/widgets/floordialog.cpp
+    src/widgets/floordialog.cpp \
+    src/widgets/floortile.cpp \
+    src/widgets/wall.cpp
 
 HEADERS  += src/widgets/mainwindow.h   \
     src/scenario.h                     \
     src/widgets/scenariowidget.h       \
     src/widgets/playerdialog.h \
-    src/widgets/floordialog.h
+    src/widgets/floordialog.h \
+    src/widgets/floortile.h \
+    src/widgets/wall.h
 
 FORMS    += src/widgets/mainwindow.ui  \
     src/widgets/scenariowidget.ui      \
     src/widgets/playerdialog.ui \
-    src/widgets/floordialog.ui
+    src/widgets/floordialog.ui \
+    src/widgets/floortile.ui

@@ -168,7 +168,7 @@ void ScenarioWidget::editFloor()
     if (!selectedItems.isEmpty()) {
         QString floorName = selectedItems.at(0)->text();
         Floor *f = getFloor(floorName);
-        FloorDialog fd(floorName, f->z);
+        FloorDialog fd(floorName, f->z, f->rooms);
         if (fd.exec()) {
 
         }
