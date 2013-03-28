@@ -6,8 +6,8 @@ foo = {
             '_rooms': {
                 'Room Name': {
                     'id': 'RoomID',
-                    'x': 0,
-                    'y': 0,
+                    'x': 9,
+                    'y': 1,
                     'walls': {
                         'WallID': {
                             'name': 'Wall Name',
@@ -25,6 +25,17 @@ foo = {
                             'destination': {
                                 'x': 1
                             }
+                        }
+                    }
+                },
+                'Another Room': {
+                    'id': 'AnotherID',
+                    'x': 4,
+                    'y': 3,
+                    'walls': {
+                        'AnotherWall': {
+                            'name': 'Another Name',
+                            'image': 'img.png',
                         }
                     }
                 }

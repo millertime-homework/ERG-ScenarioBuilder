@@ -1,5 +1,7 @@
 #include <QDebug>
 #include <QAbstractButton>
+#include <QMessageBox>
+#include <QScrollBar>
 
 #include "floortile.h"
 #include "floordialog.h"
@@ -31,6 +33,12 @@ FloorDialog::FloorDialog(const QString &name, int z,
             this, SLOT(floorNameChanged(QString)));
     connect(ui->z, SIGNAL(textEdited(QString)),
             this, SLOT(enableOkButton()));
+    connect(ui->addRoom, SIGNAL(clicked()),
+            this, SLOT(addRoom()));
+    connect(ui->editRoom, SIGNAL(clicked()),
+            this, SLOT(editRoom()));
+    connect(ui->removeRoom, SIGNAL(clicked()),
+            this, SLOT(removeRoom()));
 }
 
 FloorDialog::~FloorDialog()
@@ -38,9 +46,21 @@ FloorDialog::~FloorDialog()
     delete ui;
 }
 
+QString FloorDialog::floorName() const
+{
+    return ui->name->text();
+}
+
 void FloorDialog::addRoom(Room *r)
 {
+    int row = maxY - r->y + 1;
+    int col = r->x - minX + 1;
+    QLayoutItem *item = ui->grid->itemAtPosition(row, col);
+    FloorTile *tile = qobject_cast<FloorTile*>(item->widget());
+    if (!tile)
+        return;
 
+    tile->makeRoom(r);
 }
 
 void FloorDialog::floorNameChanged(const QString &name)
@@ -61,6 +81,39 @@ void FloorDialog::tileClicked(FloorTile *tile)
         selectedTile->deselect();
     tile->select();
     selectedTile = tile;
+    bool isBlank = selectedTile->isBlank();
+    ui->addRoom->setEnabled(isBlank);
+    ui->editRoom->setDisabled(isBlank);
+    ui->removeRoom->setDisabled(isBlank);
+}
+
+void FloorDialog::addRoom()
+{
+    if (selectedTile && selectedTile->isBlank()) {
+        Room *r = new Room("");
+        selectedTile->makeRoom(r);
+        emit roomAdded(this, r);
+    }
+    ui->addRoom->setEnabled(false);
+    ui->editRoom->setEnabled(true);
+    ui->removeRoom->setEnabled(true);
+}
+
+void FloorDialog::editRoom()
+{
+    QMessageBox::information(this, "Edit Room - Not Implemented",
+                             "Sorry, the Edit Room feature is not available yet.");
+}
+
+void FloorDialog::removeRoom()
+{
+    if (selectedTile && !selectedTile->isBlank()) {
+        Room *r = selectedTile->makeBlank();
+        emit roomRemoved(this, r);
+    }
+    ui->addRoom->setEnabled(true);
+    ui->editRoom->setEnabled(false);
+    ui->removeRoom->setEnabled(false);
 }
 
 void FloorDialog::getMinAndMax(QList<Room*> rooms)
@@ -84,7 +137,7 @@ void FloorDialog::getMinAndMax(QList<Room*> rooms)
         if (r->y > maxY)
             maxY = r->y;
     }
-    qDebug() << "minX" << minX << "maxX" << maxX << "minY" << minY << "maxY" << maxY;
+//    qDebug() << "minX" << minX << "maxX" << maxX << "minY" << minY << "maxY" << maxY;
 }
 
 void FloorDialog::createBlankTiles()
@@ -100,4 +153,6 @@ void FloorDialog::createBlankTiles()
                     this, SLOT(tileClicked(FloorTile*)));
         }
     }
+    int sw = ui->scrollArea->verticalScrollBar()->width();
+    ui->scrollArea->setMaximumSize(num_cols * 222 + sw, num_rows * 222 + sw);
 }

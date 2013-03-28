@@ -78,6 +78,11 @@ ScenarioWidget::ScenarioWidget(Scenario *s, QWidget *parent) :
             this, SLOT(showPlayerDialog()));
 }
 
+ScenarioWidget::~ScenarioWidget()
+{
+    delete ui;
+}
+
 void ScenarioWidget::addFloor()
 {
     QString floorName = QInputDialog::getText(this, "Add a new floor",
@@ -169,6 +174,10 @@ void ScenarioWidget::editFloor()
         QString floorName = selectedItems.at(0)->text();
         Floor *f = getFloor(floorName);
         FloorDialog fd(floorName, f->z, f->rooms);
+        connect(&fd, SIGNAL(roomAdded(FloorDialog*,Room*)),
+                this, SLOT(addRoom(FloorDialog*,Room*)));
+        connect(&fd, SIGNAL(roomRemoved(FloorDialog*,Room*)),
+                this, SLOT(removeRoom(FloorDialog*,Room*)));
         if (fd.exec()) {
 
         }
@@ -291,6 +300,20 @@ void ScenarioWidget::removeInactiveProp()
             scenario->inactiveProps.removeAt(i);
         }
     }
+}
+
+void ScenarioWidget::addRoom(FloorDialog *d, Room *r)
+{
+    Floor *f = getFloor(d->floorName());
+    f->rooms.append(r);
+}
+
+void ScenarioWidget::removeRoom(FloorDialog *d, Room *r)
+{
+    Floor *f = getFloor(d->floorName());
+    int i = f->rooms.indexOf(r);
+    if (i != -1)
+        f->rooms.removeAt(i);
 }
 
 bool ScenarioWidget::floorExists(const QString &name)

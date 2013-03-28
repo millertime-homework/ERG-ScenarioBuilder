@@ -17,7 +17,8 @@
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
-    tabWidget(new QTabWidget())
+    tabWidget(new QTabWidget()),
+    recentMenu(NULL)
 {
     ui->setupUi(this);
     if (!ui->centralWidget->layout()) {
@@ -26,12 +27,16 @@ MainWindow::MainWindow(QWidget *parent) :
     }
     ui->centralWidget->layout()->addWidget(tabWidget);
 
+    loadMru();
+
     connect(ui->actionAbout, SIGNAL(triggered()),
             this, SLOT(aboutDialog()));
     connect(ui->actionNew_Scenario, SIGNAL(triggered()),
             this, SLOT(newScenario()));
     connect(ui->actionLoad_Scenario, SIGNAL(triggered()),
             this, SLOT(loadScenario()));
+    connect(&mru, SIGNAL(openRecent(QString)),
+            this, SLOT(loadScenario(QString)));
     connect(ui->actionSave_Scenario, SIGNAL(triggered()),
             this, SLOT(saveScenario()));
 }
@@ -67,13 +72,16 @@ void MainWindow::loadScenario()
 {
     QString scenarioFile = QFileDialog::getOpenFileName(this, "Select a Scenario File",
                                                         QString(), "Scenario JSON File (*.js)");
-    if (scenarioFile.isEmpty())
-        return;
+    if (!scenarioFile.isEmpty())
+        loadScenario(scenarioFile);
+}
 
+void MainWindow::loadScenario(const QString &path)
+{
     QElapsedTimer timer;
     timer.start();
 
-    QFile f(scenarioFile);
+    QFile f(path);
     if (!f.open(QFile::ReadOnly))
         return;
 
@@ -94,6 +102,16 @@ void MainWindow::loadScenario()
 //        qDebug() << floorMap.value(floor);
         Floor *f = new Floor(floor);
         s->floors.append(f);
+
+        QVariantMap roomMap = floorMap.value(floor).toMap().value("_rooms").toMap();
+        foreach (QString room, roomMap.keys()) {
+//            qDebug() << "Room" << room << "has value:";
+//            qDebug() << roomMap.value(room);
+            Room *r = new Room(room);
+            r->x = roomMap.value(room).toMap().value("x").toInt();
+            r->y = roomMap.value(room).toMap().value("y").toInt();
+            f->rooms.append(r);
+        }
     }
 
     QScriptValue conversations = sc.property("_conversations");
@@ -142,6 +160,8 @@ void MainWindow::loadScenario()
 
     qint64 elapsed = timer.elapsed();
     ui->statusBar->showMessage("Completed command in " + QString::number(elapsed/1000.0) + " seconds", 3000);
+    mru.addPath(path);
+    loadMru();
 }
 
 void MainWindow::saveScenario()
@@ -152,4 +172,24 @@ void MainWindow::saveScenario()
                              "Sorry, the Save Scenario feature is not available yet.");
     qint64 elapsed = timer.elapsed();
     ui->statusBar->showMessage("Completed command in " + QString::number(elapsed/1000.0) + " seconds", 3000);
+}
+
+void MainWindow::loadMru()
+{
+    if (!mru.getScenarios().isEmpty()) {
+        ui->actionRecent_Scenarios->setEnabled(true);
+        if (!recentMenu) {
+            recentMenu = new QMenu();
+            ui->actionRecent_Scenarios->setMenu(recentMenu);
+        }
+        foreach (QAction *scenario, mru.getScenarios()) {
+            bool exists = false;
+            foreach (QAction *menuItem, recentMenu->actions()) {
+                if (scenario->text() == menuItem->text())
+                    exists = true;
+            }
+            if (!exists)
+                recentMenu->addAction(scenario);
+        }
+    }
 }

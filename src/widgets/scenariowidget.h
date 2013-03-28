@@ -9,11 +9,14 @@ namespace Ui {
 class ScenarioWidget;
 }
 
+class FloorDialog;
+
 class ScenarioWidget : public QWidget
 {
     Q_OBJECT
 public:
     ScenarioWidget(Scenario *s, QWidget *parent = 0);
+    ~ScenarioWidget();
 
 public slots:
     void addFloor();
@@ -42,6 +45,9 @@ private slots:
     void inactivePropSelectionChanged();
     void editInactiveProp();
     void removeInactiveProp();
+
+    void addRoom(FloorDialog *d, Room *r);
+    void removeRoom(FloorDialog *d, Room *r);
 
 private:
     bool floorExists(const QString &name);

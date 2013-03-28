@@ -21,12 +21,20 @@ public:
     ~FloorDialog();
 
 public:
+    QString floorName() const;
     void addRoom(Room *r);
+
+signals:
+    void roomAdded(FloorDialog *d, Room *r);
+    void roomRemoved(FloorDialog *d, Room *r);
 
 private slots:
     void floorNameChanged(const QString &name);
     void enableOkButton();
     void tileClicked(FloorTile *tile);
+    void addRoom();
+    void editRoom();
+    void removeRoom();
 
 private:
     void getMinAndMax(QList<Room*> rooms);
