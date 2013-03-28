@@ -48,6 +48,7 @@ struct WallThumbnail
 
 struct Room
 {
+    Room(const QString &n) : name(n), x(0), y(0) {}
     QString name;
     QString roomId;
     int x;
