@@ -17,7 +17,6 @@ Winter 2013 by Team Banana for Clark College.
 
 **Previously Added**
 
-* Initial version just created.
 * New scenarios can be created.
 * Player dialog shows X, Y, Z, and facing start values as well as starting inventory items.
 * Editing player dialog values persists (the scenario objects are updated).
