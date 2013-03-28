@@ -24,6 +24,11 @@ PlayerDialog::PlayerDialog(int x, int y, int z, const QString &facing,
             this, SLOT(addItem()));
 }
 
+PlayerDialog::~PlayerDialog()
+{
+    delete ui;
+}
+
 int PlayerDialog::getX() const
 {
     return ui->x->text().toInt();

@@ -13,6 +13,7 @@ class PlayerDialog : public QDialog
 public:
     PlayerDialog(int x, int y, int z, const QString &facing,
                  const QStringList &inventory, QWidget *parent = 0);
+    ~PlayerDialog();
 
     int getX() const;
     int getY() const;
