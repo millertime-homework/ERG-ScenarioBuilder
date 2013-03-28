@@ -12,6 +12,8 @@ Winter 2013 by Team Banana for Clark College.
 
 * Partially loads scenario from JSON file.
 * Partially displays Floor Widget for editing details for a Floor.
+* Floor Widget now partially displays rooms, laid out in a grid. Rooms can be added or removed.
+* Can re-open a scenario, using "recent" menu.
 
 **Previously Added**
 
