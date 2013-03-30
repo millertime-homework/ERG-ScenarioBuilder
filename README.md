@@ -29,6 +29,7 @@ Winter 2013 by Team Banana for Clark College.
 
 **To do**
 
+* License (GPL because Qt will be included)
 * Open Scenario - Parsing JSON: http://qtwiki.remdex.info/Parsing_JSON_with_QT_using_standard_QT_library
   (In Progress)
 * Save Scenario to JSON.
