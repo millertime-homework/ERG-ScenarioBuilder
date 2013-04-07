@@ -38,6 +38,9 @@
    <enum>QFrame::Raised</enum>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>6</number>
+   </property>
    <property name="margin">
     <number>6</number>
    </property>
@@ -127,7 +130,7 @@
         <x>0</x>
         <y>0</y>
         <width>206</width>
-        <height>110</height>
+        <height>120</height>
        </rect>
       </property>
      </widget>

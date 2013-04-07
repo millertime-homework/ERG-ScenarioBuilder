@@ -10,15 +10,17 @@
 #include <QtScript/QScriptValueIterator>
 
 #include "src/scenario.h"
+#include "src/widgets/logwindow.h"
 #include "scenariowidget.h"
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-MainWindow::MainWindow(QWidget *parent) :
+MainWindow::MainWindow(const QString &scenario, QWidget *parent) :
     QMainWindow(parent),
     ui(new Ui::MainWindow),
     tabWidget(new QTabWidget()),
-    recentMenu(NULL)
+    recentMenu(NULL),
+    logWindow(new LogWindow())
 {
     ui->setupUi(this);
     if (!ui->centralWidget->layout()) {
@@ -39,6 +41,12 @@ MainWindow::MainWindow(QWidget *parent) :
             this, SLOT(loadScenario(QString)));
     connect(ui->actionSave_Scenario, SIGNAL(triggered()),
             this, SLOT(saveScenario()));
+    connect(ui->actionLog, SIGNAL(triggered()),
+            logWindow, SLOT(show()));
+
+    if (!scenario.isEmpty()) {
+        loadScenario(scenario);
+    }
 }
 
 MainWindow::~MainWindow()
@@ -82,6 +90,7 @@ void MainWindow::loadScenario(const QString &path)
     timer.start();
 
     QFile f(path);
+    log("Opening scenario file " + path);
     if (!f.open(QFile::ReadOnly))
         return;
 
@@ -159,7 +168,7 @@ void MainWindow::loadScenario(const QString &path)
     ui->actionSave_Scenario->setEnabled(true);
 
     qint64 elapsed = timer.elapsed();
-    ui->statusBar->showMessage("Completed command in " + QString::number(elapsed/1000.0) + " seconds", 3000);
+    log("Loaded scenario in " + QString::number(elapsed/1000.0) + " seconds");
     mru.addPath(path);
     loadMru();
 }
@@ -171,7 +180,7 @@ void MainWindow::saveScenario()
     QMessageBox::information(this, "Save Scenario - Not Implemented",
                              "Sorry, the Save Scenario feature is not available yet.");
     qint64 elapsed = timer.elapsed();
-    ui->statusBar->showMessage("Completed command in " + QString::number(elapsed/1000.0) + " seconds", 3000);
+    log("Saved scenario in " + QString::number(elapsed/1000.0) + " seconds");
 }
 
 void MainWindow::loadMru()
@@ -192,4 +201,10 @@ void MainWindow::loadMru()
                 recentMenu->addAction(scenario);
         }
     }
+}
+
+void MainWindow::log(const QString &message)
+{
+    ui->statusBar->showMessage(message);
+    logWindow->info(message);
 }
